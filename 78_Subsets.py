@@ -31,3 +31,30 @@ class SolutionV2:
                     subset.append(nums[j])
             subsets.append(subset)
         return subsets
+
+
+# backtracking simple version
+class SolutionV3:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        n = len(nums)
+
+        def backtrack(i, tmp):
+            if i == n:
+                return
+            res.append(tmp)
+            for j in range(i+1, n):
+                backtrack(j, tmp + [nums[j]])
+
+        backtrack(-1, [])
+        return res
+
+
+# iteration version
+class SolutionV4:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = [[]]
+        n = len(nums)
+        for num in nums:
+            res = res + [r+[num] for r in res]
+        return res
