@@ -34,7 +34,7 @@ class Solution(object):
         """
         if head is None or head.next is None:
             return head
-        p = self.reverseList(head.next)
+        p = self.reverseListV2(head.next)
         head.next.next = head
         head.next = None
         return p
